@@ -1,5 +1,5 @@
 ARCHS := arm64 arm64e
-TARGET := iphone:clang:14.5:14.0
+TARGET := iphone:clang:16.5:15.0
 
 include $(THEOS)/makefiles/common.mk
 
@@ -7,9 +7,8 @@ BUNDLE_NAME = HiddenJailbreakPreferences
 $(BUNDLE_NAME)_FILES = HJRootListController.m ../Core/HJHook.m
 $(BUNDLE_NAME)_INSTALL_PATH = /Library/PreferenceBundles
 $(BUNDLE_NAME)_FRAMEWORKS = UIKit
-$(BUNDLE_NAME)_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
+$(BUNDLE_NAME)_EXTRA_FRAMEWORKS = AltList Cephei CepheiPrefs
 $(BUNDLE_NAME)_PRIVATE_FRAMEWORKS = Preferences
-$(BUNDLE_NAME)_LIBRARIES = applist
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

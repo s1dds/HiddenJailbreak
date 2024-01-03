@@ -2073,10 +2073,10 @@ static void dyld_image_added(const struct mach_header *mh, intptr_t slide) {
     return %orig;
 }
 
-%hookf(pid_t, vfork) {
-    errno = ENOSYS;
-    return -1;
-}
+// %hookf(pid_t, vfork) {
+//     errno = ENOSYS;
+//     return -1;
+// }
 
 %hookf(pid_t, fork) {
     errno = ENOSYS;

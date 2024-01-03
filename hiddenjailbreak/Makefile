@@ -1,7 +1,13 @@
 ARCHS := arm64 arm64e
-TARGET := iphone:14.5:14.0
+TARGET := iphone:16.5:15.0
 
 include $(THEOS)/makefiles/common.mk
+
+ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
+	PACKAGE_BUILDNAME := rootless
+else
+	PACKAGE_BUILDNAME := rootful
+endif
 
 TWEAK_NAME = HiddenJailbreak
 
