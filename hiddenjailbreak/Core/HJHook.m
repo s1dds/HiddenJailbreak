@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #import "HJHook.h"
+#import <rootless.h>
 
 @implementation HiddenJailbreak
 - (id)init {

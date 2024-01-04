@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 #import <Cephei/HBPreferences.h>
 #import "Core/HJHook.h"
+#import <rootless.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -3139,6 +3140,8 @@ void init_path_map(HiddenJailbreak *HiddenJailbreak) {
     // Restrict /System
     [HiddenJailbreak addPath:@"/System" restricted:NO];
     [HiddenJailbreak addPath:@"/System/Library/PreferenceBundles/AppList.bundle" restricted:YES];
+
+    [HiddenJailbreak addPath:@"/var/jb" restricted:YES];
 }
 
 // Manual hooks
@@ -3374,14 +3377,14 @@ static ssize_t hook_readlinkat(int fd, const char *path, char *buf, size_t bufsi
             NSLog(@"bundleIdentifier: %@", bundleIdentifier);
 
             HBPreferences *prefs = [HBPreferences preferencesForIdentifier:PREFS_TWEAK_ID];
-
+            
             [prefs registerDefaults:@{
                 @"enabled" : @YES,
-                @"mode" : @"whitelist",
+                @"mode" : @"blacklist",
                 @"bypass_checks" : @YES,
                 @"exclude_system_apps" : @YES,
                 @"dyld_hooks_enabled" : @YES,
-                @"extra_compat_enabled" : @YES
+                @"extra_compat_enabled" : @NO
             }];
 
             extra_compat = [prefs boolForKey:@"extra_compat_enabled"];
@@ -3413,7 +3416,7 @@ static ssize_t hook_readlinkat(int fd, const char *path, char *buf, size_t bufsi
             HBPreferences *prefs_apps = [HBPreferences preferencesForIdentifier:APPS_PATH];
 
             // Check if excluded bundleIdentifier
-            NSString *mode = [prefs objectForKey:@"mode"];
+            NSString *mode = [prefs_apps objectForKey:@"mode"];
 
             if([mode isEqualToString:@"whitelist"]) {
                 // Whitelist - disable HiddenJailbreak if not enabled for this bundleIdentifier

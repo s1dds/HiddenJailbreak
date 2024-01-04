@@ -96,7 +96,7 @@
 				<key>key</key>
 				<string>mode</string>
 				<key>default</key>
-				<string>whitelist</string>
+				<string>blacklist</string>
 				<key>defaults</key>
 				<string>me.noobpk.hiddenjailbreak</string>
 				<key>validValues</key>
@@ -242,7 +242,7 @@
 				<key>detail</key>
 				<string>ATLApplicationListMultiSelectionController</string>
 				<key>key</key>
-				<string>selectedApplicationsDlfcn</string>
+				<string>selectedApplications</string>
 				<key>sections</key>
 				<array>
 					<dict>
@@ -299,7 +299,7 @@
 				<key>detail</key>
 				<string>ATLApplicationListMultiSelectionController</string>
 				<key>key</key>
-				<string>selectedApplicationsCompatTweak</string>
+				<string>selectedApplications</string>
 				<key>sections</key>
 				<array>
 					<dict>
@@ -346,7 +346,7 @@
 				<key>detail</key>
 				<string>ATLApplicationListMultiSelectionController</string>
 				<key>key</key>
-				<string>selectedApplicationsLockdown</string>
+				<string>selectedApplications</string>
 				<key>sections</key>
 				<array>
 					<dict>

@@ -1,31 +1,33 @@
 #import <Foundation/Foundation.h>
+#import <rootless.h>
 #include <mach-o/dyld.h>
 
 #ifdef DEBUG
-#define NSLog(args...) NSLog(@"[hiddenjailbreak] "args)
+#define NSLog(args...) NSLog(@"[hiddenjailbreak] " args)
 #else
-#define NSLog(...);
+#define NSLog(...) ;
 #endif
 
-#define DPKG_INFO_PATH      @"/var/lib/dpkg/info"
-#define PREFS_TWEAK_ID      @"me.noobpk.hiddenjailbreak"
-#define BLACKLIST_PATH      @"me.noobpk.hiddenjailbreak.blacklist"
-#define APPS_PATH           @"me.noobpk.hiddenjailbreak.apps"
-#define DLFCN_PATH          @"me.noobpk.hiddenjailbreak.apps.dlfcn"
-#define TWEAKCOMPAT_PATH    @"me.noobpk.hiddenjailbreak.apps.compat.tweak"
-#define LOCKDOWN_PATH       @"me.noobpk.hiddenjailbreak.apps.lockdown"
+#define DPKG_INFO_PATH ROOT_PATH_NS(@"/var/lib/dpkg/info")
+#define PREFS_TWEAK_ID @"me.noobpk.hiddenjailbreak"
+#define BLACKLIST_PATH @"me.noobpk.hiddenjailbreak.blacklist"
+#define APPS_PATH @"me.noobpk.hiddenjailbreak.apps"
+#define DLFCN_PATH @"me.noobpk.hiddenjailbreak.apps.dlfcn"
+#define TWEAKCOMPAT_PATH @"me.noobpk.hiddenjailbreak.apps.compat.tweak"
+#define LOCKDOWN_PATH @"me.noobpk.hiddenjailbreak.apps.lockdown"
 
-@interface HiddenJailbreak : NSObject {
+@interface HiddenJailbreak : NSObject
+{
     NSMutableDictionary *link_map;
     NSMutableDictionary *path_map;
     NSMutableArray *image_set;
     NSMutableArray *url_set;
 }
 
-@property (nonatomic, assign) BOOL useTweakCompatibilityMode;
-@property (nonatomic, assign) BOOL useInjectCompatibilityMode;
-@property (nonatomic, assign) BOOL usePathStandardization;
-@property (readonly) BOOL passthrough;
+@property(nonatomic, assign) BOOL useTweakCompatibilityMode;
+@property(nonatomic, assign) BOOL useInjectCompatibilityMode;
+@property(nonatomic, assign) BOOL usePathStandardization;
+@property(readonly) BOOL passthrough;
 
 - (NSArray *)generateDyldArray;
 
