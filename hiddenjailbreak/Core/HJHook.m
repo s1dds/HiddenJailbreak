@@ -351,6 +351,7 @@
     || [[url scheme] isEqualToString:@"sileo"]
     || [[url scheme] isEqualToString:@"undecimus"]
     || [[url scheme] isEqualToString:@"activator"]
+    || [[url scheme] isEqualToString:@"filza"]
     || [[url scheme] isEqualToString:@"zbra"]) {
         return YES;
     }
